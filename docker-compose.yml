@@ -1,0 +1,59 @@
+services:
+  # PHP + Laravel
+  app_assinatura:
+    build: 
+      args: 
+        user: derio
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile  
+    image: drsp-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www/
+    networks:
+      - laravel-eti
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=  
+    depends_on:
+      - mysql_assinatura
+
+  nginx_assinatura:
+    image: nginx:alpine
+    container_name: webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 8006:80
+      - 446:443
+    volumes:
+      - ./:/var/www/
+      - ./docker/nginx:/etc/nginx/conf.d/  
+    networks:
+      - laravel-eti
+
+  mysql_assinatura:
+    image: mysql:5.7.22
+    command: mysqld --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ALLOW_EMPTY_PASSWORD: yes
+    ports:
+      - 3310:3306
+    volumes:
+      - ./.docker/mysql/dbdata:/var/lib/mysql
+    networks:
+      - laravel-eti
+
+networks:
+  laravel-eti:
+    driver: bridge
