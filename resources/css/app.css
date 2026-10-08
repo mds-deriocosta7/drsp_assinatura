@@ -9,3 +9,63 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+
+.signature {
+    position: relative;
+    width: 1078px;
+    height: 170px;
+    overflow: hidden;
+    margin-bottom: 26px;
+}
+
+.background {
+    width: 1078px;
+    height: 170px;
+}
+
+.name {
+    position: absolute;
+    left: 30px;
+    top: 10px;
+    color: #FFC72C;
+    font-size: 34px;
+    font-weight: bold;
+    font-family: Arial;
+}
+
+.position {
+    position: absolute;
+    left: 30px;
+    top: 74px;
+    color: #FFF;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.department {
+    position: absolute;
+    left: 195px;
+    top: 74px;
+    color: #FFF;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.email {
+    position: absolute;
+    left: 30px;
+    top: 104px;
+    color: #FFF;
+    font-size: 18px;
+    font-family: Arial;
+}
+
+.phone {
+    position: absolute;
+    left: 30px;
+    top: 136px;
+    color: #FFF;
+    font-size: 18px;
+    font-family: Arial;
+}

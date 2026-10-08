@@ -13,12 +13,24 @@ return new class extends Migration
     {
         Schema::create('signatures', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('role')->nullable();
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->string('logo_path')->nullable(); // Caminho do logo extraído
-            $table->integer('version')->default(1);  // Para controle de histórico
+
+            $table->string('name', 50);
+
+            $table->string('position', 120);
+
+            $table->string('department', 150);
+
+            $table->string('email', 150);
+
+            $table->string('phone', 30);
+
+            $table->string('path');
+
+            $table->foreignId('created_by')
+                ->nullable()
+                ->constrained('users')
+                ->nullOnDelete();
+
             $table->timestamps();
         });
     }

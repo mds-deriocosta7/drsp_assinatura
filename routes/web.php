@@ -1,10 +1,19 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignatureController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/assinatura', [SignatureController::class, 'index']);
-Route::post('/assinatura/upload', [SignatureController::class, 'upload']);
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [SignatureController::class, 'index']);
+
+Route::get('/templates', [SignatureController::class, 'templates']);
+
+Route::post(
+    '/upload',
+    [SignatureController::class, 'upload']
+);
+
+Route::post(
+    '/generate',
+    [SignatureController::class, 'generate']
+);

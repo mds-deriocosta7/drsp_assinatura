@@ -41,18 +41,10 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/') . '/storage',
+            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
-        ],
-
-        // 🔴 ADICIONE ESTE BLOCO AQUI:
-        'private' => [
-            'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'visibility' => 'private', // Garante que não haverá link público direto para cá
-            'throw' => true,
         ],
 
         's3' => [

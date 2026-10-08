@@ -18,10 +18,8 @@ RUN apt-get update && apt-get install -y \
     unzip \
     ca-certificates \
     openssl \
-    tesseract-ocr \
-    tesseract-ocr-por \
-    chromium \
-    chromium-driver \
+    nodejs \
+    npm \
     libgbm-dev \
     python3 \
     python3-pip \
